@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Countdown to Dainius Vacation start</title>
+  <title>Countdown</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+<body class="bg-gray-700 text-white flex items-center justify-center min-h-screen">
   <div class="text-center">
-    <h1 class="text-4xl font-bold mb-8">Countdown to Dainius Vacation start</h1>
+    <h1 id="title" class="text-4xl font-bold mb-8">Countdown to Dainius Vacation start</h1>
     <div id="countdown" class="flex space-x-6 text-3xl font-mono items-center justify-center">
       <div>
         <span id="days" class="block text-6xl">0</span>
@@ -30,25 +30,47 @@
   </div>
 
   <script>
-    const targetDate = new Date('2025-07-11T17:00:00');
+    const firstTarget = new Date('2025-07-11T17:00:00');
+    const secondTarget = new Date('2025-07-28T06:00:00');
+
+    const title = document.getElementById('title');
+    const container = document.getElementById('container');
+    const daysElem = document.getElementById('days');
+    const hoursElem = document.getElementById('hours');
+    const minutesElem = document.getElementById('minutes');
+    const secondsElem = document.getElementById('seconds');
 
     function updateCountdown() {
       const now = new Date();
-      const diff = targetDate - now;
-      if(diff <= 0) {
-        document.getElementById('countdown').innerHTML = "<span class='text-4xl'>Time's up!</span>";
+
+      if (now < firstTarget) {
+        // Countdown to firstTarget
+        updateDisplay(firstTarget, "Countdown to Dainius Vacation start");
+      } else if (now >= firstTarget && now < secondTarget) {
+        // Countdown to secondTarget
+        updateDisplay(secondTarget, "Countdown to Dainius Vacation end");
+      } else {
+        // Time passed both targets
+        container.innerHTML = ''; // Clear everything, display nothing
         clearInterval(interval);
-        return;
       }
+    }
+
+    function updateDisplay(targetDate, headerText) {
+      title.textContent = headerText;
+
+      const diff = targetDate - new Date();
+      if (diff <= 0) return;
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      daysElem.textContent = days.toString();
+      hoursElem.textContent = hours.toString().padStart(2, '0');
+      minutesElem.textContent = minutes.toString().padStart(2, '0');
+      secondsElem.textContent = seconds.toString().padStart(2, '0');
     }
 
     updateCountdown();
