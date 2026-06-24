@@ -1,0 +1,10 @@
+# Ignore JetBrains IDEs
+.idea/
+
+# Optional common build and dependencies folders
+node_modules/
+dist/
+build/
+
+# OS files
+.DS_Store

@@ -6,25 +6,29 @@
   <title>Countdown</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-700 text-white flex items-center justify-center min-h-screen">
-  <div class="text-center px-4 w-full max-w-lg">
-    <h1 id="title" class="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8">Countdown to Dainius Vacation start</h1>
-    <div id="countdown" class="flex flex-col sm:flex-row gap-4 sm:gap-6 text-2xl sm:text-3xl font-mono items-center justify-center">
-      <div>
-        <span id="days" class="block text-5xl sm:text-6xl">0</span>
-        Days
-      </div>
-      <div>
-        <span id="hours" class="block text-5xl sm:text-6xl">0</span>
-        Hours
-      </div>
-      <div>
-        <span id="minutes" class="block text-5xl sm:text-6xl">0</span>
-        Minutes
-      </div>
-      <div>
-        <span id="seconds" class="block text-5xl sm:text-6xl">0</span>
-        Seconds
+<body class="relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat text-amber-50" style="background-image: url('summer.png');">
+  <div class="absolute inset-0 bg-gradient-to-br from-sky-200/65 via-sky-900/30 to-amber-900/25"></div>
+
+  <div id="container" class="relative z-10 w-full max-w-3xl px-4 text-center">
+    <div class="rounded-3xl border border-white/25 bg-sky-200/35 px-6 py-8 shadow-2xl backdrop-blur-sm sm:px-10 sm:py-12">
+      <h1 id="title" class="mb-6 text-2xl font-bold tracking-wide text-amber-100 drop-shadow-lg sm:mb-8 sm:text-4xl">Countdown to Dainius Vacation start</h1>
+      <div id="countdown" class="flex flex-col items-center justify-center gap-4 text-2xl font-mono text-lime-50 drop-shadow-md sm:flex-row sm:gap-6 sm:text-3xl">
+        <div>
+          <span id="days" class="block text-5xl font-bold text-yellow-100 sm:text-6xl">0</span>
+          Days
+        </div>
+        <div>
+          <span id="hours" class="block text-5xl font-bold text-yellow-100 sm:text-6xl">0</span>
+          Hours
+        </div>
+        <div>
+          <span id="minutes" class="block text-5xl font-bold text-yellow-100 sm:text-6xl">0</span>
+          Minutes
+        </div>
+        <div>
+          <span id="seconds" class="block text-5xl font-bold text-yellow-100 sm:text-6xl">0</span>
+          Seconds
+        </div>
       </div>
     </div>
   </div>
